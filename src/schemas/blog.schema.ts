@@ -1,22 +1,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import cuid from 'cuid'
 import { HydratedDocument } from 'mongoose'
 import { BlogsCategoriesEnum, BlogsContentTypeEnum } from 'src/enums/blog.enum'
+import { MultiLangText } from './shared/text.schema'
 
 export type BlogDocument = HydratedDocument<Blog>
 
 // Helper classes
-@Schema({ _id: false })
-export class MultiLangText {
-	@Prop({ type: String, required: true })
-	ro: string
-
-	@Prop({ type: String, required: true })
-	ru: string
-
-	@Prop({ type: String, required: true })
-	en: string
-}
 
 @Schema({ _id: false })
 export class Summary {

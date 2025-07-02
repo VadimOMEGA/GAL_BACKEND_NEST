@@ -8,12 +8,14 @@ async function bootstrap() {
 	app.setGlobalPrefix('api')
 	app.use(cookieParser())
 	app.enableCors({
-		origin: 'http://localhost:3000',
+		origin: ["http://localhost:3000", "https://gal-liard.vercel.app"],
 		credentials: true,
-		exposedHeaders: ['set-cookie']
+		exposedHeaders: ['set-cookie'],
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+        optionsSuccessStatus: 200
 	})
 
-	// Swagger Configuration
     const config = new DocumentBuilder()
         .setTitle('GAL Backend API')
         .setDescription('The GAL Backend API documentation')

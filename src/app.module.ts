@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { BlogsModule } from './blogs/blogs.module';
 import { AwsModule } from './aws/aws.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
 	imports: [
@@ -16,6 +17,7 @@ import { AwsModule } from './aws/aws.module';
 		AdminModule,
 		BlogsModule,
 		AwsModule,
+		StatisticsModule,
 	]
 })
 export class AppModule {}
