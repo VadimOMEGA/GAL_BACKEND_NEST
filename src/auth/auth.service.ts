@@ -91,17 +91,17 @@ export class AuthService {
 
         res.cookie(this.REFRESH_TOKEN_NAME, refreshToken, {
             httpOnly: true,
-            domain: process.env.COOKIE_DOMAIN || 'localhost',
+            // domain: process.env.COOKIE_DOMAIN || 'localhost',
             expires: expiresIn,
             secure: true,
-            sameSite: 'none', // lax if production
+            sameSite: 'none',
         })
     }
 
     removeRefreshTokenFromResponse(res: Response) {
         res.cookie(this.REFRESH_TOKEN_NAME, '', {
             httpOnly: true,
-            domain: process.env.COOKIE_DOMAIN,
+            // domain: process.env.COOKIE_DOMAIN,
             expires: new Date(0),
             secure: true,
             sameSite: 'none', // lax if production
