@@ -89,24 +89,21 @@ export class AuthService {
         const expiresIn = new Date()
         expiresIn.setDate(expiresIn.getDate() + this.EXPIRE_DAY_REFRESH_TOKEN)
 
-        const isProduction = process.env.NODE_ENV === 'production';
-
         res.cookie(this.REFRESH_TOKEN_NAME, refreshToken, {
             httpOnly: true,
             expires: expiresIn,
-            secure: isProduction,
-            sameSite: isProduction ? 'none' : 'lax',
+            secure: false,
+            sameSite: 'none',
         })
     }
 
     removeRefreshTokenFromResponse(res: Response) {
-        const isProduction = process.env.NODE_ENV === 'production';
 
         res.cookie(this.REFRESH_TOKEN_NAME, '', {
             httpOnly: true,
             expires: new Date(0),
-            secure: isProduction,
-            sameSite: isProduction ? 'none' : 'lax',
+            secure: false,
+            sameSite: 'none',
         })
     }
 }
