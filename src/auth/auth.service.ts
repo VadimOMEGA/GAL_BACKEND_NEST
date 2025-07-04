@@ -93,7 +93,7 @@ export class AuthService {
             httpOnly: true,
             expires: expiresIn,
             secure: false,
-            sameSite: 'lax',
+            sameSite: 'strict',
         })
     }
 
@@ -103,7 +103,7 @@ export class AuthService {
             httpOnly: true,
             expires: new Date(0),
             secure: false,
-            sameSite: 'lax',
+            sameSite: 'strict',
         })
     }
 }
