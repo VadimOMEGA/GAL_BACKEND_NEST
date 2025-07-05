@@ -5,8 +5,7 @@ import {
   ApiResponse, 
   ApiBearerAuth, 
   ApiParam, 
-  ApiBody,
-  ApiTags 
+  ApiBody
 } from '@nestjs/swagger';
 
 export function SwaggerGetBlogs() {
@@ -49,6 +48,13 @@ export function SwaggerGetBlogs() {
       enum: ['NEWS', 'ENTERPRENEURSHIP', 'LOGISTICS', 'PUBLIC'],
       description: 'Filter by category',
       example: 'LOGISTICS'
+    }),
+    ApiQuery({ 
+      name: 'authentic_local_category', 
+      required: false, 
+      enum: ['LOCAL_PRODUCTS', 'SERVICES', 'TOURIST_ATTRACTIONS', 'PEOPLE_AND_VALUES'],
+      description: 'Filter by authentic local category',
+      example: 'LOCAL_PRODUCTS'
     }),
     ApiResponse({
       status: 200,

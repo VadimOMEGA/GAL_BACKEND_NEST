@@ -1,8 +1,8 @@
 import { Type } from "class-transformer";
-import { ArrayMinSize, IsArray, IsEnum, IsObject, IsString, MinLength, ValidateNested } from "class-validator";
+import { ArrayMinSize, IsArray, IsEnum, IsObject, IsOptional, IsString, MinLength, ValidateNested } from "class-validator";
 import { SectionDto } from "./section.dto";
 import { SummaryDto } from "./summary.dto";
-import { BlogsCategoriesEnum, BlogsContentTypeEnum } from "src/enums/blog.enum";
+import { AuthenticLocalCategoriesEnum, BlogsCategoriesEnum, BlogsContentTypeEnum } from "src/enums/blog.enum";
 import { MultiLangTextDto } from "./multiLangText.dto";
 
 export class BlogDto {
@@ -18,6 +18,10 @@ export class BlogDto {
   @IsArray()
   @IsEnum(BlogsCategoriesEnum, { each: true })
   categories: BlogsCategoriesEnum[];
+
+  @IsOptional()
+  @IsEnum(AuthenticLocalCategoriesEnum)
+  authentic_local_category: AuthenticLocalCategoriesEnum;
 
   @IsString()
   @MinLength(1)

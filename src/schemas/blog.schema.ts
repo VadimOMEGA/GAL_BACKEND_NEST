@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument } from 'mongoose'
-import { BlogsCategoriesEnum, BlogsContentTypeEnum } from 'src/enums/blog.enum'
+import { AuthenticLocalCategoriesEnum, BlogsCategoriesEnum, BlogsContentTypeEnum } from 'src/enums/blog.enum'
 import { MultiLangText } from './shared/text.schema'
 
 export type BlogDocument = HydratedDocument<Blog>
@@ -54,6 +54,9 @@ export class Blog {
 
 	@Prop({ type: [String], enum: BlogsCategoriesEnum, required: true })
 	categories: BlogsCategoriesEnum[]
+
+	@Prop({ type: String, enum: AuthenticLocalCategoriesEnum, required: false })
+	authentic_local_category?: AuthenticLocalCategoriesEnum
 
 	@Prop({ type: String, required: true })
 	main_image: string

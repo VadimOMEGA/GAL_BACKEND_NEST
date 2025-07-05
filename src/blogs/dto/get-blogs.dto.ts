@@ -1,6 +1,6 @@
 import { Type } from "class-transformer";
 import { IsEnum, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
-import { BlogsCategoriesEnum, BlogsContentTypeEnum } from "src/enums/blog.enum";
+import { AuthenticLocalCategoriesEnum, BlogsCategoriesEnum, BlogsContentTypeEnum } from "src/enums/blog.enum";
 
 export class GetBlogsDto {
     // Pagination
@@ -29,4 +29,8 @@ export class GetBlogsDto {
     @IsOptional()
     @IsEnum(BlogsCategoriesEnum)
     category?: BlogsCategoriesEnum;
+
+    @IsOptional()
+    @IsEnum(AuthenticLocalCategoriesEnum)
+    authentic_local_category?: AuthenticLocalCategoriesEnum;
 }
