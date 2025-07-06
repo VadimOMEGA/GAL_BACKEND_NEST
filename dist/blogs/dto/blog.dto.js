@@ -20,6 +20,7 @@ class BlogDto {
     title;
     content_type;
     categories;
+    authentic_local_category;
     main_image;
     summary;
     sections;
@@ -40,6 +41,11 @@ __decorate([
     (0, class_validator_1.IsEnum)(blog_enum_1.BlogsCategoriesEnum, { each: true }),
     __metadata("design:type", Array)
 ], BlogDto.prototype, "categories", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsEnum)(blog_enum_1.AuthenticLocalCategoriesEnum),
+    __metadata("design:type", String)
+], BlogDto.prototype, "authentic_local_category", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(1),

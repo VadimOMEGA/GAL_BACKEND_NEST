@@ -66,11 +66,11 @@ export class BlogsController {
 
   // For image upload
   @HttpCode(200)
-  @Post(':id/generate-upload-link')
+  @Post('/generate-upload-link')
   @SwaggerGenerateUploadLink()
   @Auth()
-	async generateImageUploadLink(@Param('id') id: string) {
-		return this.blogsService.generateImageUploadLink(id)
+	async generateImageUploadLink() {
+		return this.blogsService.generateImageUploadLink()
 	}
 
   @UsePipes(new ValidationPipe({ transform: true }))

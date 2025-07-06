@@ -30,6 +30,7 @@ export declare class BlogsController {
             searchTerm: string | undefined;
             contentType: import("../enums/blog.enum").BlogsContentTypeEnum | undefined;
             category: import("../enums/blog.enum").BlogsCategoriesEnum | undefined;
+            authenticLocalCategory: import("../enums/blog.enum").AuthenticLocalCategoriesEnum | undefined;
         };
     }>;
     getById(id: string): Promise<import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("../schemas/blog.schema").Blog, {}> & import("../schemas/blog.schema").Blog & {

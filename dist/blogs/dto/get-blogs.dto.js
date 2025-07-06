@@ -19,6 +19,7 @@ class GetBlogsDto {
     q;
     content_type;
     category;
+    authentic_local_category;
 }
 exports.GetBlogsDto = GetBlogsDto;
 __decorate([
@@ -51,4 +52,9 @@ __decorate([
     (0, class_validator_1.IsEnum)(blog_enum_1.BlogsCategoriesEnum),
     __metadata("design:type", String)
 ], GetBlogsDto.prototype, "category", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsEnum)(blog_enum_1.AuthenticLocalCategoriesEnum),
+    __metadata("design:type", String)
+], GetBlogsDto.prototype, "authentic_local_category", void 0);
 //# sourceMappingURL=get-blogs.dto.js.map

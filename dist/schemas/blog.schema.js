@@ -75,6 +75,7 @@ let Blog = class Blog {
     title;
     content_type;
     categories;
+    authentic_local_category;
     main_image;
     summary;
     sections;
@@ -92,6 +93,10 @@ __decorate([
     (0, mongoose_1.Prop)({ type: [String], enum: blog_enum_1.BlogsCategoriesEnum, required: true }),
     __metadata("design:type", Array)
 ], Blog.prototype, "categories", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: String, enum: blog_enum_1.AuthenticLocalCategoriesEnum, required: false }),
+    __metadata("design:type", String)
+], Blog.prototype, "authentic_local_category", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ type: String, required: true }),
     __metadata("design:type", String)

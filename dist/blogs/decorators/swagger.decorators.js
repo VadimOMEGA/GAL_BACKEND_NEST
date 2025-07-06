@@ -43,6 +43,12 @@ function SwaggerGetBlogs() {
         enum: ['NEWS', 'ENTERPRENEURSHIP', 'LOGISTICS', 'PUBLIC'],
         description: 'Filter by category',
         example: 'LOGISTICS'
+    }), (0, swagger_1.ApiQuery)({
+        name: 'authentic_local_category',
+        required: false,
+        enum: ['LOCAL_PRODUCTS', 'SERVICES', 'TOURIST_ATTRACTIONS', 'PEOPLE_AND_VALUES'],
+        description: 'Filter by authentic local category',
+        example: 'LOCAL_PRODUCTS'
     }), (0, swagger_1.ApiResponse)({
         status: 200,
         description: 'Successfully retrieved blogs',

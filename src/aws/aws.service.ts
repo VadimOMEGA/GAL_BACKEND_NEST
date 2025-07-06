@@ -13,9 +13,9 @@ export class AwsService {
 		}
 	})
 
-	async generateUploadLink(id: string, destination: string) {
-		const hash = crypto.randomBytes(4).toString('hex')
-		const fileName = `${destination}/${id}/${hash}.png`
+	async generateUploadLink(destination: string) {
+		const hash = crypto.randomBytes(8).toString('hex')
+    	const fileName = `${destination}/${hash}.png`
 
 		const command = new PutObjectCommand({
 			Bucket: process.env.AWS_BUCKET_NAME,
@@ -26,7 +26,8 @@ export class AwsService {
 
 		return {
 			success: true,
-			imageUrl: uploadUrl,
+			uploadUrl: uploadUrl,
+			publicUrl: `https://${process.env.AWS_CLOUDFRONT_DOMAIN}.cloudfront.net/${fileName}`,
 			key: fileName
 		}
 	}

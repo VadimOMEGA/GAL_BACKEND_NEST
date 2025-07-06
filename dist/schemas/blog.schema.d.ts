@@ -1,5 +1,5 @@
 import { HydratedDocument } from 'mongoose';
-import { BlogsCategoriesEnum, BlogsContentTypeEnum } from 'src/enums/blog.enum';
+import { AuthenticLocalCategoriesEnum, BlogsCategoriesEnum, BlogsContentTypeEnum } from 'src/enums/blog.enum';
 import { MultiLangText } from './shared/text.schema';
 export type BlogDocument = HydratedDocument<Blog>;
 export declare class Summary {
@@ -20,6 +20,7 @@ export declare class Blog {
     title: MultiLangText;
     content_type: BlogsContentTypeEnum;
     categories: BlogsCategoriesEnum[];
+    authentic_local_category?: AuthenticLocalCategoriesEnum;
     main_image: string;
     summary: Summary;
     sections: Section[];

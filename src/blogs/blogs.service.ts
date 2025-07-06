@@ -100,8 +100,8 @@ export class BlogsService {
 
 	// For image upload
 
-	async generateImageUploadLink(blogId: string) {
-		return this.awsService.generateUploadLink(blogId, 'BLOGS')
+	async generateImageUploadLink() {
+		return this.awsService.generateUploadLink('BLOGS')
 	}
 
 	async deleteBlogImages(imageUrls: string[]) {

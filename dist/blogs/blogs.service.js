@@ -26,7 +26,7 @@ let BlogsService = class BlogsService {
         this.awsService = awsService;
     }
     async getAll(getBlogsDto) {
-        const { page = 1, limit = 12, q, content_type, category } = getBlogsDto;
+        const { page = 1, limit = 12, q, content_type, category, authentic_local_category } = getBlogsDto;
         const skip = (page - 1) * limit;
         const query = {};
         if (q) {
@@ -41,13 +41,16 @@ let BlogsService = class BlogsService {
                 { 'summary.column2.ru': { $regex: q, $options: 'i' } },
                 { 'summary.column2.en': { $regex: q, $options: 'i' } },
                 { content_type: { $regex: q, $options: 'i' } },
-                { categories: { $regex: q, $options: 'i' } }
+                { categories: { $regex: q, $options: 'i' } },
+                { authentic_local_category: { $regex: q, $options: 'i' } }
             ];
         }
         if (content_type)
             query.content_type = content_type;
         if (category)
             query.categories = { $in: [category] };
+        if (authentic_local_category)
+            query.authentic_local_category = authentic_local_category;
         const [blogs, total] = await Promise.all([
             this.blogModel.find(query).sort({ createdAt: -1 }).skip(skip).limit(limit).exec(),
             this.blogModel.countDocuments(query).exec()
@@ -65,7 +68,8 @@ let BlogsService = class BlogsService {
             filters: {
                 searchTerm: q,
                 contentType: content_type,
-                category
+                category,
+                authenticLocalCategory: authentic_local_category
             }
         };
     }
@@ -92,7 +96,7 @@ let BlogsService = class BlogsService {
         return blog;
     }
     async generateImageUploadLink(blogId) {
-        return this.awsService.generateUploadLink(blogId, "BLOGS");
+        return this.awsService.generateUploadLink(blogId, 'BLOGS');
     }
     async deleteBlogImages(imageUrls) {
         return this.awsService.deleteImages(imageUrls);
