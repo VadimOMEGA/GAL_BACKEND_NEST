@@ -298,12 +298,7 @@ function SwaggerGenerateUploadLink() {
     return (0, common_1.applyDecorators)((0, swagger_1.ApiOperation)({
         summary: 'Generate image upload link',
         description: 'Generate a pre-signed URL for uploading images to AWS S3. Requires authentication.'
-    }), (0, swagger_1.ApiBearerAuth)('JWT-auth'), (0, swagger_1.ApiParam)({
-        name: 'id',
-        type: String,
-        description: 'Blog ID for image upload',
-        example: '507f1f77bcf86cd799439011'
-    }), (0, swagger_1.ApiResponse)({
+    }), (0, swagger_1.ApiBearerAuth)('JWT-auth'), (0, swagger_1.ApiResponse)({
         status: 200,
         description: 'Upload link generated successfully',
         schema: {
@@ -311,7 +306,7 @@ function SwaggerGenerateUploadLink() {
             properties: {
                 success: { type: 'boolean', example: true },
                 imageUrl: { type: 'string', example: 'https://s3.amazonaws.com/bucket/presigned-url' },
-                key: { type: 'string', example: 'BLOGS/507f1f77bcf86cd799439011/abc123.png' }
+                key: { type: 'string', example: 'BLOGS/hash.png' }
             }
         }
     }), (0, swagger_1.ApiResponse)({ status: 401, description: 'Unauthorized - JWT token required' }), (0, swagger_1.ApiResponse)({ status: 404, description: 'Blog not found' }));

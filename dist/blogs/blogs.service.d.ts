@@ -74,9 +74,10 @@ export declare class BlogsService {
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>>;
-    generateImageUploadLink(blogId: string): Promise<{
+    generateImageUploadLink(): Promise<{
         success: boolean;
-        imageUrl: string;
+        uploadUrl: string;
+        publicUrl: string;
         key: string;
     }>;
     deleteBlogImages(imageUrls: string[]): Promise<{

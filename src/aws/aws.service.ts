@@ -1,7 +1,7 @@
 import { DeleteObjectsCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { Injectable } from '@nestjs/common'
-import crypto from 'crypto'
+import * as crypto from 'crypto'
 
 @Injectable()
 export class AwsService {

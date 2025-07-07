@@ -42,8 +42,8 @@ let BlogsController = class BlogsController {
     async delete(id) {
         return this.blogsService.delete(id);
     }
-    async generateImageUploadLink(id) {
-        return this.blogsService.generateImageUploadLink(id);
+    async generateImageUploadLink() {
+        return this.blogsService.generateImageUploadLink();
     }
     async deleteBlogImages(dto) {
         return this.blogsService.deleteBlogImages(dto.imageUrls);
@@ -102,12 +102,11 @@ __decorate([
 ], BlogsController.prototype, "delete", null);
 __decorate([
     (0, common_1.HttpCode)(200),
-    (0, common_1.Post)(':id/generate-upload-link'),
+    (0, common_1.Post)('/generate-upload-link'),
     (0, swagger_decorators_1.SwaggerGenerateUploadLink)(),
     (0, auth_decorator_1.Auth)(),
-    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BlogsController.prototype, "generateImageUploadLink", null);
 __decorate([

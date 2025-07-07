@@ -95,8 +95,8 @@ let BlogsService = class BlogsService {
             throw new common_1.NotFoundException('Blog not found');
         return blog;
     }
-    async generateImageUploadLink(blogId) {
-        return this.awsService.generateUploadLink(blogId, 'BLOGS');
+    async generateImageUploadLink() {
+        return this.awsService.generateUploadLink('BLOGS');
     }
     async deleteBlogImages(imageUrls) {
         return this.awsService.deleteImages(imageUrls);

@@ -1,8 +1,9 @@
 export declare class AwsService {
     private s3;
-    generateUploadLink(id: string, destination: string): Promise<{
+    generateUploadLink(destination: string): Promise<{
         success: boolean;
-        imageUrl: string;
+        uploadUrl: string;
+        publicUrl: string;
         key: string;
     }>;
     deleteImages(images: string[]): Promise<{
