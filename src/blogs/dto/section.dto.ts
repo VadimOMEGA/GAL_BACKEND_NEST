@@ -14,9 +14,4 @@ export class SectionDto {
 	@ArrayMinSize(1, { message: 'At least one subsection is required' })
 	@Type(() => SubSectionDto)
 	subsections: SubSectionDto[]
-
-	@IsOptional()
-	@IsArray()
-	@IsString({ each: true })
-	images?: string[]
 }
