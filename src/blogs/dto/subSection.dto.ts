@@ -19,8 +19,4 @@ export class SubSectionDto {
   @Type(() => MultiLangTextDto)
   column2?: MultiLangTextDto;
 
-  @IsOptional()
-  @IsArray()
-  @IsString({ each: true })
-  images?: string[];
 }

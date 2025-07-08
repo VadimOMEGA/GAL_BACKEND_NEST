@@ -26,9 +26,6 @@ export class SubSection {
 
 	@Prop({ type: MultiLangText, required: false })
 	column2: MultiLangText
-
-	@Prop({ type: [String], required: false })
-	images: string[]
 }
 
 @Schema({ _id: false })
@@ -38,6 +35,9 @@ export class Section {
 
 	@Prop({ type: [SubSection], required: true })
 	subsections: SubSection[]
+
+	@Prop({ type: [String], required: false })
+	images: string[]
 }
 
 
