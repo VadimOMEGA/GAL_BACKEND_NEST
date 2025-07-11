@@ -18,7 +18,6 @@ exports.DeleteImagesDto = DeleteImagesDto;
 __decorate([
     (0, class_validator_1.IsArray)(),
     (0, class_validator_1.IsString)({ each: true }),
-    (0, class_validator_1.IsUrl)({}, { each: true }),
     __metadata("design:type", Array)
 ], DeleteImagesDto.prototype, "imageUrls", void 0);
 //# sourceMappingURL=delete-images.dto.js.map
