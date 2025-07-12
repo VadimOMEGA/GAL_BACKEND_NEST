@@ -14,7 +14,7 @@ export class AwsService {
 	})
 
 	async generateUploadLink(destination: string) {
-		const hash = crypto.randomBytes(8).toString('hex')
+		const hash = crypto.randomBytes(16).toString('hex')
     	const fileName = `${destination}/${hash}.png`
 
 		const command = new PutObjectCommand({
