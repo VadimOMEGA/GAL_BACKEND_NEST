@@ -17,7 +17,15 @@ import { Auth } from 'src/auth/decorators/auth.decorator'
 import { DeleteImagesDto } from './dto/delete-images.dto'
 import { UpdateBlogDto } from './dto/update-blog-dto'
 import { GetBlogsDto } from './dto/get-blogs.dto'
-import { SwaggerCreateBlog, SwaggerDeleteBlog, SwaggerDeleteImages, SwaggerGenerateUploadLink, SwaggerGetBlogById, SwaggerGetBlogs, SwaggerUpdateBlog } from './decorators/swagger.decorators'
+import {
+	SwaggerCreateBlog,
+	SwaggerDeleteBlog,
+	SwaggerDeleteImages,
+	SwaggerGenerateUploadLink,
+	SwaggerGetBlogById,
+	SwaggerGetBlogs,
+	SwaggerUpdateBlog
+} from './decorators/swagger.decorators'
 import { ApiTags } from '@nestjs/swagger'
 
 @ApiTags('📝 Blogs')
@@ -29,7 +37,7 @@ export class BlogsController {
 	@SwaggerGetBlogs()
 	@UsePipes(new ValidationPipe({ transform: true }))
 	async getAll(@Query() getBlogsDto: GetBlogsDto) {
-		return this.blogsService.getAll(getBlogsDto);
+		return this.blogsService.getAll(getBlogsDto)
 	}
 
 	@Get(':id')
@@ -47,7 +55,14 @@ export class BlogsController {
 		return this.blogsService.create(dto)
 	}
 
-	@UsePipes(new ValidationPipe({ transform: true, forbidNonWhitelisted: true, whitelist: true, skipMissingProperties: false }))
+	@UsePipes(
+		new ValidationPipe({
+			transform: true,
+			forbidNonWhitelisted: true,
+			whitelist: true,
+			skipMissingProperties: false
+		})
+	)
 	@HttpCode(200)
 	@Put(':id')
 	@SwaggerUpdateBlog()
@@ -64,21 +79,21 @@ export class BlogsController {
 		return this.blogsService.delete(id)
 	}
 
-  // For image upload
-  @HttpCode(200)
-  @Post('/generate-upload-link')
-  @SwaggerGenerateUploadLink()
-  @Auth()
+	// For image upload
+	@HttpCode(200)
+	@Post('/generate-upload-link')
+	@SwaggerGenerateUploadLink()
+	@Auth()
 	async generateImageUploadLink() {
 		return this.blogsService.generateImageUploadLink()
 	}
 
-  @UsePipes(new ValidationPipe({ transform: true }))
-  @HttpCode(200)
-  @Post('delete-images')
-  @SwaggerDeleteImages()
-  @Auth()
-  async deleteBlogImages(@Body() dto: DeleteImagesDto) {
-    return this.blogsService.deleteBlogImages(dto.imageUrls)
-  }
+	@UsePipes(new ValidationPipe({ transform: true }))
+	@HttpCode(200)
+	@Post('delete-images')
+	@SwaggerDeleteImages()
+	@Auth()
+	async deleteBlogImages(@Body() dto: DeleteImagesDto) {
+		return this.blogsService.deleteBlogImages(dto.imageUrls)
+	}
 }

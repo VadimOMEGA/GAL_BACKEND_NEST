@@ -3,10 +3,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthenticLocalCategoriesEnum = exports.BlogsContentTypeEnum = exports.BlogsCategoriesEnum = void 0;
 var BlogsCategoriesEnum;
 (function (BlogsCategoriesEnum) {
-    BlogsCategoriesEnum["NEWS"] = "NEWS";
-    BlogsCategoriesEnum["ENTERPRENEURSHIP"] = "ENTERPRENEURSHIP";
-    BlogsCategoriesEnum["LOGISTICS"] = "LOGISTICS";
+    BlogsCategoriesEnum["PROJECTS"] = "PROJECTS";
+    BlogsCategoriesEnum["LOCAL_PRODUCTS"] = "LOCAL_PRODUCTS";
+    BlogsCategoriesEnum["SERVICES"] = "SERVICES";
+    BlogsCategoriesEnum["TOURIST_ATTRACTIONS"] = "TOURIST_ATTRACTIONS";
+    BlogsCategoriesEnum["PEOPLE_AND_VALUES"] = "PEOPLE_AND_VALUES";
+    BlogsCategoriesEnum["CALLS"] = "CALLS";
+    BlogsCategoriesEnum["EVENTS"] = "EVENTS";
+    BlogsCategoriesEnum["AGRICULTURE"] = "AGRICULTURE";
+    BlogsCategoriesEnum["TOURISM"] = "TOURISM";
+    BlogsCategoriesEnum["ENTREPRENEURSHIP"] = "ENTREPRENEURSHIP";
+    BlogsCategoriesEnum["YOUTH"] = "YOUTH";
+    BlogsCategoriesEnum["CULTURE"] = "CULTURE";
     BlogsCategoriesEnum["PUBLIC"] = "PUBLIC";
+    BlogsCategoriesEnum["ECOLOGY"] = "ECOLOGY";
+    BlogsCategoriesEnum["PARTNERSHIPS"] = "PARTNERSHIPS";
 })(BlogsCategoriesEnum || (exports.BlogsCategoriesEnum = BlogsCategoriesEnum = {}));
 var BlogsContentTypeEnum;
 (function (BlogsContentTypeEnum) {

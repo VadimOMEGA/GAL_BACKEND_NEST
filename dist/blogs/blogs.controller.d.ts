@@ -7,6 +7,22 @@ export declare class BlogsController {
     private readonly blogsService;
     constructor(blogsService: BlogsService);
     getAll(getBlogsDto: GetBlogsDto): Promise<{
+        blogs: any;
+        pagination: {
+            page: number;
+            limit: number;
+            total: any;
+            totalPages: number;
+            hasNextPage: boolean;
+            hasPrevPage: boolean;
+        };
+        filters: {
+            searchTerm: string;
+            contentType: import("../enums/blog.enum").BlogsContentTypeEnum | undefined;
+            category: import("../enums/blog.enum").BlogsCategoriesEnum | undefined;
+            authenticLocalCategory: import("../enums/blog.enum").AuthenticLocalCategoriesEnum | undefined;
+        };
+    } | {
         blogs: (import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("../schemas/blog.schema").Blog, {}> & import("../schemas/blog.schema").Blog & {
             _id: import("mongoose").Types.ObjectId;
         } & {

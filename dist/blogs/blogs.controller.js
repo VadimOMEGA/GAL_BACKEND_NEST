@@ -79,7 +79,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], BlogsController.prototype, "create", null);
 __decorate([
-    (0, common_1.UsePipes)(new common_1.ValidationPipe({ transform: true, forbidNonWhitelisted: true, whitelist: true, skipMissingProperties: false })),
+    (0, common_1.UsePipes)(new common_1.ValidationPipe({
+        transform: true,
+        forbidNonWhitelisted: true,
+        whitelist: true,
+        skipMissingProperties: false
+    })),
     (0, common_1.HttpCode)(200),
     (0, common_1.Put)(':id'),
     (0, swagger_decorators_1.SwaggerUpdateBlog)(),

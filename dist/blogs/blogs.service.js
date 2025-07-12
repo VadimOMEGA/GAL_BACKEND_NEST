@@ -28,23 +28,69 @@ let BlogsService = class BlogsService {
     async getAll(getBlogsDto) {
         const { page = 1, limit = 12, q, content_type, category, authentic_local_category } = getBlogsDto;
         const skip = (page - 1) * limit;
-        const query = {};
+        const filters = [];
+        if (content_type)
+            filters.push({ content_type });
+        if (category)
+            filters.push({ categories: category });
+        if (authentic_local_category)
+            filters.push({ authentic_local_category });
         if (q) {
-            query.$or = [
-                { 'title.ro': { $regex: q, $options: 'i' } },
-                { 'title.en': { $regex: q, $options: 'i' } },
-                { 'title.ru': { $regex: q, $options: 'i' } },
-                { 'summary.column1.ro': { $regex: q, $options: 'i' } },
-                { 'summary.column1.ru': { $regex: q, $options: 'i' } },
-                { 'summary.column1.en': { $regex: q, $options: 'i' } },
-                { 'summary.column2.ro': { $regex: q, $options: 'i' } },
-                { 'summary.column2.ru': { $regex: q, $options: 'i' } },
-                { 'summary.column2.en': { $regex: q, $options: 'i' } },
-                { content_type: { $regex: q, $options: 'i' } },
-                { categories: { $regex: q, $options: 'i' } },
-                { authentic_local_category: { $regex: q, $options: 'i' } }
+            const aggregatePipeline = [
+                {
+                    $search: {
+                        index: 'default',
+                        compound: {
+                            should: [
+                                { text: { query: q, path: 'title.ro', fuzzy: {} } },
+                                { text: { query: q, path: 'title.en', fuzzy: {} } },
+                                { text: { query: q, path: 'title.ru', fuzzy: {} } },
+                                { text: { query: q, path: 'summary.column1.ro', fuzzy: {} } },
+                                { text: { query: q, path: 'summary.column1.en', fuzzy: {} } },
+                                { text: { query: q, path: 'summary.column1.ru', fuzzy: {} } },
+                                { text: { query: q, path: 'summary.column2.ro', fuzzy: {} } },
+                                { text: { query: q, path: 'summary.column2.en', fuzzy: {} } },
+                                { text: { query: q, path: 'summary.column2.ru', fuzzy: {} } },
+                                { text: { query: q, path: 'content_type', fuzzy: {} } },
+                                { text: { query: q, path: 'categories', fuzzy: {} } },
+                                { text: { query: q, path: 'authentic_local_category', fuzzy: {} } }
+                            ]
+                        }
+                    }
+                },
+                ...(filters.length ? [{ $match: { $and: filters } }] : []),
+                { $sort: { createdAt: -1 } },
+                { $skip: skip },
+                { $limit: limit },
+                {
+                    $facet: {
+                        blogs: [{ $match: {} }],
+                        total: [{ $count: 'count' }]
+                    }
+                }
             ];
+            const [result] = await this.blogModel.aggregate(aggregatePipeline).exec();
+            const blogs = result?.blogs || [];
+            const total = result?.total?.[0]?.count || 0;
+            return {
+                blogs,
+                pagination: {
+                    page,
+                    limit,
+                    total,
+                    totalPages: Math.ceil(total / limit),
+                    hasNextPage: page < Math.ceil(total / limit),
+                    hasPrevPage: page > 1
+                },
+                filters: {
+                    searchTerm: q,
+                    contentType: content_type,
+                    category,
+                    authenticLocalCategory: authentic_local_category
+                }
+            };
         }
+        const query = {};
         if (content_type)
             query.content_type = content_type;
         if (category)
