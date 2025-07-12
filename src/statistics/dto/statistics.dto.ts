@@ -30,6 +30,10 @@ export class StatisticsDto {
 
   @IsString()
   @MinLength(1)
+  total_added_members: string;
+
+  @IsString()
+  @MinLength(1)
   business_members: string;
 
   @IsString()

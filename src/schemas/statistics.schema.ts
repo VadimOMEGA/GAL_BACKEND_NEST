@@ -25,6 +25,9 @@ export class Statistics {
     total_members: string
 
     @Prop({ type: String, required: true })
+    total_added_members: string
+
+    @Prop({ type: String, required: true })
     business_members: string
 
     @Prop({ type: String, required: true })
