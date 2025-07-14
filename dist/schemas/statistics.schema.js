@@ -19,6 +19,7 @@ let Statistics = class Statistics {
     activity_years;
     population;
     total_members;
+    total_added_members;
     business_members;
     public_members;
     civic_members;
@@ -48,6 +49,10 @@ __decorate([
     (0, mongoose_1.Prop)({ type: String, required: true }),
     __metadata("design:type", String)
 ], Statistics.prototype, "total_members", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], Statistics.prototype, "total_added_members", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ type: String, required: true }),
     __metadata("design:type", String)

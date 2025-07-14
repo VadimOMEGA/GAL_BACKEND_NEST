@@ -20,6 +20,7 @@ class StatisticsDto {
     activity_years;
     population;
     total_members;
+    total_added_members;
     business_members;
     public_members;
     civic_members;
@@ -56,6 +57,11 @@ __decorate([
     (0, class_validator_1.MinLength)(1),
     __metadata("design:type", String)
 ], StatisticsDto.prototype, "total_members", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.MinLength)(1),
+    __metadata("design:type", String)
+], StatisticsDto.prototype, "total_added_members", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MinLength)(1),

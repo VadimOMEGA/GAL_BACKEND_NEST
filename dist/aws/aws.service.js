@@ -20,7 +20,7 @@ let AwsService = class AwsService {
         }
     });
     async generateUploadLink(destination) {
-        const hash = crypto.randomBytes(8).toString('hex');
+        const hash = crypto.randomBytes(16).toString('hex');
         const fileName = `${destination}/${hash}.png`;
         const command = new client_s3_1.PutObjectCommand({
             Bucket: process.env.AWS_BUCKET_NAME,

@@ -6,6 +6,7 @@ export declare class StatisticsDto {
     activity_years: string;
     population: string;
     total_members: string;
+    total_added_members: string;
     business_members: string;
     public_members: string;
     civic_members: string;

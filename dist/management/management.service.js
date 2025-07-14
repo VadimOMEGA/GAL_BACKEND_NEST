@@ -1,0 +1,59 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ManagementService = void 0;
+const common_1 = require("@nestjs/common");
+const mongoose_1 = require("@nestjs/mongoose");
+const mongoose_2 = require("mongoose");
+const management_schema_1 = require("../schemas/management.schema");
+let ManagementService = class ManagementService {
+    managementModel;
+    constructor(managementModel) {
+        this.managementModel = managementModel;
+    }
+    async getManagement() {
+        const management = await this.managementModel.findOne().exec();
+        if (!management) {
+            throw new common_1.NotFoundException('Management not found');
+        }
+        return management.toObject();
+    }
+    async updateManagement(dto) {
+        if (!dto || Object.keys(dto).length === 0)
+            throw new common_1.BadRequestException('No data provided');
+        const management = await this.managementModel
+            .findOneAndUpdate({}, dto, {
+            new: true,
+            upsert: true,
+            runValidators: true
+        })
+            .exec();
+        return management.toObject();
+    }
+    async initializeManagement(dto) {
+        const existingManagement = await this.managementModel.findOne().exec();
+        if (existingManagement) {
+            throw new common_1.BadRequestException('Management already exists. Use update instead.');
+        }
+        const management = await this.managementModel.create(dto);
+        return management.toObject();
+    }
+};
+exports.ManagementService = ManagementService;
+exports.ManagementService = ManagementService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, mongoose_1.InjectModel)(management_schema_1.Management.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model])
+], ManagementService);
+//# sourceMappingURL=management.service.js.map

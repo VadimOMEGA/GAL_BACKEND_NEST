@@ -4,12 +4,14 @@ const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const cookieParser = require("cookie-parser");
 const swagger_1 = require("@nestjs/swagger");
+const mongoose_1 = require("mongoose");
 async function bootstrap() {
+    mongoose_1.default.Schema.Types.String.checkRequired((v) => v != null);
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.setGlobalPrefix('api');
     app.use(cookieParser());
     app.enableCors({
-        origin: ["http://localhost:3000", "https://gal-liard.vercel.app"],
+        origin: ['http://localhost:3000', 'https://gal-liard.vercel.app'],
         credentials: true,
         exposedHeaders: ['set-cookie'],
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -26,19 +28,19 @@ async function bootstrap() {
         bearerFormat: 'JWT',
         name: 'JWT',
         description: 'Enter JWT token',
-        in: 'header',
+        in: 'header'
     }, 'JWT-auth')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api/docs', app, document, {
         swaggerOptions: {
-            persistAuthorization: true,
+            persistAuthorization: true
         },
         customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css',
         customJs: [
             'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js',
-            'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js',
-        ],
+            'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js'
+        ]
     });
     await app.listen(process.env.PORT || 4200);
     console.log(`Application is running on port ${process.env.PORT || 4200}`);
