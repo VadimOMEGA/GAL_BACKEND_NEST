@@ -48,4 +48,24 @@ export class AwsService {
 			success: true
 		}
 	}
+
+	// For pdf upload
+	async generatePdfUploadLink(destination: string) {
+		const hash = crypto.randomBytes(16).toString('hex')
+		const fileName = `${destination}/${hash}.pdf`
+
+		const command = new PutObjectCommand({
+			Bucket: process.env.AWS_BUCKET_NAME,
+			Key: fileName
+		})
+
+		const uploadUrl = await getSignedUrl(this.s3, command, { expiresIn: 3600 })
+
+		return {
+			success: true,
+			uploadUrl: uploadUrl,
+			publicUrl: `https://${process.env.AWS_CLOUDFRONT_DOMAIN}.cloudfront.net/${fileName}`,
+			key: fileName
+		}
+	}
 }

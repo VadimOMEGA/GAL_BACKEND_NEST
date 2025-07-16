@@ -19,6 +19,7 @@ const swagger_1 = require("@nestjs/swagger");
 const auth_decorator_1 = require("../auth/decorators/auth.decorator");
 const documents_update_dto_1 = require("./dto/documents-update.dto");
 const documents_dto_1 = require("./dto/documents.dto");
+const delete_pdf_dto_1 = require("./dto/delete-pdf.dto");
 let DocumentsController = class DocumentsController {
     documentsService;
     constructor(documentsService) {
@@ -32,6 +33,12 @@ let DocumentsController = class DocumentsController {
     }
     async initializeDocuments(dto) {
         return this.documentsService.initializeDocuments(dto);
+    }
+    async generateImageUploadLink() {
+        return this.documentsService.generateFileUploadLink();
+    }
+    async deleteDocumentFiles(dto) {
+        return this.documentsService.deleteDocuments(dto.fileUrls);
     }
 };
 exports.DocumentsController = DocumentsController;
@@ -71,6 +78,24 @@ __decorate([
     __metadata("design:paramtypes", [documents_dto_1.DocumentsDto]),
     __metadata("design:returntype", Promise)
 ], DocumentsController.prototype, "initializeDocuments", null);
+__decorate([
+    (0, common_1.HttpCode)(200),
+    (0, common_1.Post)('/generate-upload-link'),
+    (0, auth_decorator_1.Auth)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], DocumentsController.prototype, "generateImageUploadLink", null);
+__decorate([
+    (0, common_1.UsePipes)(new common_1.ValidationPipe({ transform: true })),
+    (0, common_1.HttpCode)(200),
+    (0, common_1.Post)('delete-files'),
+    (0, auth_decorator_1.Auth)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [delete_pdf_dto_1.DeleteFilesDto]),
+    __metadata("design:returntype", Promise)
+], DocumentsController.prototype, "deleteDocumentFiles", null);
 exports.DocumentsController = DocumentsController = __decorate([
     (0, swagger_1.ApiTags)('📄 Documents'),
     (0, common_1.Controller)('documents'),

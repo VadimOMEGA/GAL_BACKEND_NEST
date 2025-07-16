@@ -4,6 +4,7 @@ import { ApiTags } from '@nestjs/swagger'
 import { Auth } from 'src/auth/decorators/auth.decorator'
 import { UpdateDocumentsDto } from './dto/documents-update.dto'
 import { DocumentsDto } from './dto/documents.dto'
+import { DeleteFilesDto } from './dto/delete-pdf.dto'
 
 @ApiTags('📄 Documents')
 @Controller('documents')
@@ -44,4 +45,21 @@ export class DocumentsController {
 	async initializeDocuments(@Body() dto: DocumentsDto) {
 		return this.documentsService.initializeDocuments(dto)
 	}
+
+	// For PDF upload
+	// For image upload
+		@HttpCode(200)
+		@Post('/generate-upload-link')
+		@Auth()
+		async generateImageUploadLink() {
+			return this.documentsService.generateFileUploadLink()
+		}
+	
+		@UsePipes(new ValidationPipe({ transform: true }))
+		@HttpCode(200)
+		@Post('delete-files')
+		@Auth()
+		async deleteDocumentFiles(@Body() dto: DeleteFilesDto) {
+			return this.documentsService.deleteDocuments(dto.fileUrls)
+		}
 }

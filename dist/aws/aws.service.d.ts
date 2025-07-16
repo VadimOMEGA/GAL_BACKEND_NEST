@@ -9,4 +9,10 @@ export declare class AwsService {
     deleteImages(images: string[]): Promise<{
         success: boolean;
     }>;
+    generatePdfUploadLink(destination: string): Promise<{
+        success: boolean;
+        uploadUrl: string;
+        publicUrl: string;
+        key: string;
+    }>;
 }

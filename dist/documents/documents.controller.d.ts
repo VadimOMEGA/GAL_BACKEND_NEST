@@ -1,6 +1,7 @@
 import { DocumentsService } from './documents.service';
 import { UpdateDocumentsDto } from './dto/documents-update.dto';
 import { DocumentsDto } from './dto/documents.dto';
+import { DeleteFilesDto } from './dto/delete-pdf.dto';
 export declare class DocumentsController {
     private readonly documentsService;
     constructor(documentsService: DocumentsService);
@@ -25,4 +26,13 @@ export declare class DocumentsController {
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>>;
+    generateImageUploadLink(): Promise<{
+        success: boolean;
+        uploadUrl: string;
+        publicUrl: string;
+        key: string;
+    }>;
+    deleteDocumentFiles(dto: DeleteFilesDto): Promise<{
+        success: boolean;
+    }>;
 }

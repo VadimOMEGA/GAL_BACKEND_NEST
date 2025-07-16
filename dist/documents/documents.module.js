@@ -12,12 +12,13 @@ const documents_service_1 = require("./documents.service");
 const documents_controller_1 = require("./documents.controller");
 const mongoose_1 = require("@nestjs/mongoose");
 const documents_schema_1 = require("../schemas/documents.schema");
+const aws_module_1 = require("../aws/aws.module");
 let DocumentsModule = class DocumentsModule {
 };
 exports.DocumentsModule = DocumentsModule;
 exports.DocumentsModule = DocumentsModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: documents_schema_1.Documents.name, schema: documents_schema_1.DocumentsSchema }])],
+        imports: [aws_module_1.AwsModule, mongoose_1.MongooseModule.forFeature([{ name: documents_schema_1.Documents.name, schema: documents_schema_1.DocumentsSchema }])],
         controllers: [documents_controller_1.DocumentsController],
         providers: [documents_service_1.DocumentsService]
     })

@@ -17,10 +17,13 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const documents_schema_1 = require("../schemas/documents.schema");
+const aws_service_1 = require("../aws/aws.service");
 let DocumentsService = class DocumentsService {
     documentsModel;
-    constructor(documentsModel) {
+    awsService;
+    constructor(documentsModel, awsService) {
         this.documentsModel = documentsModel;
+        this.awsService = awsService;
     }
     async getDocuments() {
         const documents = await this.documentsModel.findOne().exec();
@@ -49,11 +52,18 @@ let DocumentsService = class DocumentsService {
         const documents = await this.documentsModel.create(dto);
         return documents.toObject();
     }
+    async generateFileUploadLink() {
+        return this.awsService.generatePdfUploadLink('DOCUMENTS');
+    }
+    async deleteDocuments(fileUrls) {
+        return this.awsService.deleteImages(fileUrls);
+    }
 };
 exports.DocumentsService = DocumentsService;
 exports.DocumentsService = DocumentsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(documents_schema_1.Documents.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        aws_service_1.AwsService])
 ], DocumentsService);
 //# sourceMappingURL=documents.service.js.map

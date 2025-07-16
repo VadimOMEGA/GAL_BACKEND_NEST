@@ -46,6 +46,21 @@ let AwsService = class AwsService {
             success: true
         };
     }
+    async generatePdfUploadLink(destination) {
+        const hash = crypto.randomBytes(16).toString('hex');
+        const fileName = `${destination}/${hash}.pdf`;
+        const command = new client_s3_1.PutObjectCommand({
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: fileName
+        });
+        const uploadUrl = await (0, s3_request_presigner_1.getSignedUrl)(this.s3, command, { expiresIn: 3600 });
+        return {
+            success: true,
+            uploadUrl: uploadUrl,
+            publicUrl: `https://${process.env.AWS_CLOUDFRONT_DOMAIN}.cloudfront.net/${fileName}`,
+            key: fileName
+        };
+    }
 };
 exports.AwsService = AwsService;
 exports.AwsService = AwsService = __decorate([

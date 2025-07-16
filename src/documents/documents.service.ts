@@ -3,10 +3,14 @@ import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { Documents, DocumentsDocument } from 'src/schemas/documents.schema'
 import { DocumentsDto } from './dto/documents.dto'
+import { AwsService } from 'src/aws/aws.service'
 
 @Injectable()
 export class DocumentsService {
-	constructor(@InjectModel(Documents.name) private documentsModel: Model<DocumentsDocument>) {}
+	constructor(
+		@InjectModel(Documents.name) private documentsModel: Model<DocumentsDocument>,
+		private readonly awsService: AwsService
+	) {}
 
 	async getDocuments() {
 		const documents = await this.documentsModel.findOne().exec()
@@ -41,5 +45,14 @@ export class DocumentsService {
 		const documents = await this.documentsModel.create(dto)
 
 		return documents.toObject()
+	}
+
+	// For PDF upload
+	async generateFileUploadLink() {
+		return this.awsService.generatePdfUploadLink('DOCUMENTS')
+	}
+
+	async deleteDocuments(fileUrls: string[]) {
+		return this.awsService.deleteImages(fileUrls)
 	}
 }
