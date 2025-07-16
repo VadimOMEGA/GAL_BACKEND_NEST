@@ -19,7 +19,7 @@ const general_assembly_dto_1 = require("./general-assembly.dto");
 const administration_dto_1 = require("./administration.dto");
 const censorship_dto_1 = require("./censorship.dto");
 class ManagementDto {
-    image;
+    main_image;
     president;
     executive;
     general_assembly;
@@ -31,7 +31,7 @@ exports.ManagementDto = ManagementDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], ManagementDto.prototype, "image", void 0);
+], ManagementDto.prototype, "main_image", void 0);
 __decorate([
     (0, class_validator_1.IsObject)(),
     (0, class_validator_1.ValidateNested)(),

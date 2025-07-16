@@ -5,7 +5,7 @@ import { GeneralAssemblyDto } from './general-assembly.dto';
 import { AdministrationDto } from './administration.dto';
 import { CensorshipDto } from './censorship.dto';
 export declare class ManagementDto {
-    image: string;
+    main_image: string;
     president: PresidentDto;
     executive: ExecutiveDto;
     general_assembly: GeneralAssemblyDto;

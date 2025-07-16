@@ -9,7 +9,7 @@ import { CensorshipDto } from './censorship.dto'
 
 export class ManagementDto {
   @IsString()
-  image: string
+  main_image: string
 
   @IsObject()
   @ValidateNested()
