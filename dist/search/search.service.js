@@ -26,6 +26,7 @@ let SearchService = class SearchService {
         this.managementService = managementService;
     }
     async searchAll(query) {
+        console.log('Search query:', query, typeof query, query.length);
         let management = [];
         let documents = [];
         let blogs = [];
@@ -74,7 +75,7 @@ let SearchService = class SearchService {
             response_type: response_enum_1.ResponseTypeEnums.MANAGEMENT
         }));
         return {
-            results: [...blogsWithType, ...documentsWithType, ...managementWithType],
+            results: [...managementWithType, ...documentsWithType, ...blogsWithType],
             stats: {
                 total_blogs: totalBlogs,
                 total_blogs_news: totalNews,

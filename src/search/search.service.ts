@@ -69,7 +69,7 @@ export class SearchService {
 		}))
 
 		return {
-			results: [...blogsWithType, ...documentsWithType, ...managementWithType],
+			results: [...managementWithType, ...documentsWithType, ...blogsWithType],
 			stats: {
 				total_blogs: totalBlogs,
 				total_blogs_news: totalNews,
