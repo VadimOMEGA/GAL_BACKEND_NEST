@@ -8,6 +8,7 @@ import { AwsModule } from './aws/aws.module';
 import { StatisticsModule } from './statistics/statistics.module';
 import { ManagementModule } from './management/management.module';
 import { DocumentsModule } from './documents/documents.module';
+import { SearchModule } from './search/search.module';
 
 @Module({
 	imports: [
@@ -22,6 +23,7 @@ import { DocumentsModule } from './documents/documents.module';
 		StatisticsModule,
 		ManagementModule,
 		DocumentsModule,
+		SearchModule,
 	]
 })
 export class AppModule {}

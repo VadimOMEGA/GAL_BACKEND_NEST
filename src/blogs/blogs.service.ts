@@ -37,7 +37,7 @@ export class BlogsService {
 			const aggregatePipeline: any[] = [
 				{
 					$search: {
-						index: 'default', // your search index name
+						index: 'default',
 						compound: {
 							should: [
 								{ text: { query: q, path: 'title.ro', fuzzy: {} } },
@@ -49,6 +49,18 @@ export class BlogsService {
 								{ text: { query: q, path: 'summary.column2.ro', fuzzy: {} } },
 								{ text: { query: q, path: 'summary.column2.en', fuzzy: {} } },
 								{ text: { query: q, path: 'summary.column2.ru', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.title.ro', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.title.en', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.title.ru', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.column1.ro', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.column1.en', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.column1.ru', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.column2.ro', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.column2.en', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.column2.ru', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.title.ro', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.title.en', fuzzy: {} } },
+								{ text: { query: q, path: 'sections.subsections.title.ru', fuzzy: {} } },
 								{ text: { query: q, path: 'content_type', fuzzy: {} } },
 								{ text: { query: q, path: 'categories', fuzzy: {} } },
 								{ text: { query: q, path: 'authentic_local_category', fuzzy: {} } }
@@ -92,7 +104,6 @@ export class BlogsService {
 			}
 		}
 
-		// If no search query — regular Mongo query
 		const query: any = {}
 		if (content_type) query.content_type = content_type
 		if (category) query.categories = { $in: [category] }
@@ -155,5 +166,48 @@ export class BlogsService {
 
 	async deleteBlogImages(imageUrls: string[]) {
 		return this.awsService.deleteImages(imageUrls)
+	}
+
+	// Search
+
+	async search(q: string, limit = 10) {
+		const aggregatePipeline: any[] = [
+			{
+				$search: {
+					index: 'default',
+					compound: {
+						should: [
+							{ text: { query: q, path: 'title.ro', fuzzy: {} } },
+							{ text: { query: q, path: 'title.en', fuzzy: {} } },
+							{ text: { query: q, path: 'title.ru', fuzzy: {} } },
+							{ text: { query: q, path: 'summary.column1.ro', fuzzy: {} } },
+							{ text: { query: q, path: 'summary.column1.en', fuzzy: {} } },
+							{ text: { query: q, path: 'summary.column1.ru', fuzzy: {} } },
+							{ text: { query: q, path: 'summary.column2.ro', fuzzy: {} } },
+							{ text: { query: q, path: 'summary.column2.en', fuzzy: {} } },
+							{ text: { query: q, path: 'summary.column2.ru', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.title.ro', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.title.en', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.title.ru', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.column1.ro', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.column1.en', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.column1.ru', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.column2.ro', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.column2.en', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.column2.ru', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.title.ro', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.title.en', fuzzy: {} } },
+							{ text: { query: q, path: 'sections.subsections.title.ru', fuzzy: {} } },
+							{ text: { query: q, path: 'content_type', fuzzy: {} } },
+							{ text: { query: q, path: 'categories', fuzzy: {} } },
+							{ text: { query: q, path: 'authentic_local_category', fuzzy: {} } }
+						]
+					}
+				}
+			},
+			{ $limit: limit }
+		]
+
+		return this.blogModel.aggregate(aggregatePipeline).exec()
 	}
 }

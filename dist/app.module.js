@@ -17,6 +17,7 @@ const aws_module_1 = require("./aws/aws.module");
 const statistics_module_1 = require("./statistics/statistics.module");
 const management_module_1 = require("./management/management.module");
 const documents_module_1 = require("./documents/documents.module");
+const search_module_1 = require("./search/search.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -34,6 +35,7 @@ exports.AppModule = AppModule = __decorate([
             statistics_module_1.StatisticsModule,
             management_module_1.ManagementModule,
             documents_module_1.DocumentsModule,
+            search_module_1.SearchModule,
         ]
     })
 ], AppModule);

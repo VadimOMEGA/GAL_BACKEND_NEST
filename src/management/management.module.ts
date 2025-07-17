@@ -7,6 +7,7 @@ import { Management, ManagementSchema } from 'src/schemas/management.schema'
 @Module({
 	imports: [MongooseModule.forFeature([{ name: Management.name, schema: ManagementSchema }])],
 	controllers: [ManagementController],
-	providers: [ManagementService]
+	providers: [ManagementService],
+	exports: [ManagementService]
 })
 export class ManagementModule {}

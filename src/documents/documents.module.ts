@@ -8,6 +8,7 @@ import { AwsModule } from 'src/aws/aws.module'
 @Module({
 	imports: [AwsModule, MongooseModule.forFeature([{ name: Documents.name, schema: DocumentsSchema }])],
 	controllers: [DocumentsController],
-	providers: [DocumentsService]
+	providers: [DocumentsService],
+	exports: [DocumentsService]
 })
 export class DocumentsModule {}

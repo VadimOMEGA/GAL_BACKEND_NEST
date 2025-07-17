@@ -19,7 +19,8 @@ exports.ManagementModule = ManagementModule = __decorate([
     (0, common_1.Module)({
         imports: [mongoose_1.MongooseModule.forFeature([{ name: management_schema_1.Management.name, schema: management_schema_1.ManagementSchema }])],
         controllers: [management_controller_1.ManagementController],
-        providers: [management_service_1.ManagementService]
+        providers: [management_service_1.ManagementService],
+        exports: [management_service_1.ManagementService]
     })
 ], ManagementModule);
 //# sourceMappingURL=management.module.js.map

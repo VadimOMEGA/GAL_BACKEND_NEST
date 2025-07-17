@@ -36,4 +36,5 @@ export declare class DocumentsService {
     deleteDocuments(fileUrls: string[]): Promise<{
         success: boolean;
     }>;
+    search(query: string, limit?: number): Promise<any[]>;
 }

@@ -49,6 +49,54 @@ let ManagementService = class ManagementService {
         const management = await this.managementModel.create(dto);
         return management.toObject();
     }
+    async search(query, limit = 10) {
+        const pipeline = [
+            {
+                $search: {
+                    index: 'default-management',
+                    compound: {
+                        should: [
+                            { text: { query, path: 'president.text.ro', fuzzy: {} } },
+                            { text: { query, path: 'president.text.en', fuzzy: {} } },
+                            { text: { query, path: 'president.text.ru', fuzzy: {} } },
+                            { text: { query, path: 'executive.column1.ro', fuzzy: {} } },
+                            { text: { query, path: 'executive.column1.en', fuzzy: {} } },
+                            { text: { query, path: 'executive.column1.ru', fuzzy: {} } },
+                            { text: { query, path: 'executive.column2.ro', fuzzy: {} } },
+                            { text: { query, path: 'executive.column2.en', fuzzy: {} } },
+                            { text: { query, path: 'executive.column2.ru', fuzzy: {} } },
+                            { text: { query, path: 'general_assembly.column1.ro', fuzzy: {} } },
+                            { text: { query, path: 'general_assembly.column1.en', fuzzy: {} } },
+                            { text: { query, path: 'general_assembly.column1.ru', fuzzy: {} } },
+                            { text: { query, path: 'general_assembly.column2.ro', fuzzy: {} } },
+                            { text: { query, path: 'general_assembly.column2.en', fuzzy: {} } },
+                            { text: { query, path: 'general_assembly.column2.ru', fuzzy: {} } },
+                            { text: { query, path: 'administration.column1.ro', fuzzy: {} } },
+                            { text: { query, path: 'administration.column1.en', fuzzy: {} } },
+                            { text: { query, path: 'administration.column1.ru', fuzzy: {} } },
+                            { text: { query, path: 'administration.column2.ro', fuzzy: {} } },
+                            { text: { query, path: 'administration.column2.en', fuzzy: {} } },
+                            { text: { query, path: 'administration.column2.ru', fuzzy: {} } },
+                            { text: { query, path: 'committee.column1.ro', fuzzy: {} } },
+                            { text: { query, path: 'committee.column1.en', fuzzy: {} } },
+                            { text: { query, path: 'committee.column1.ru', fuzzy: {} } },
+                            { text: { query, path: 'committee.column2.ro', fuzzy: {} } },
+                            { text: { query, path: 'committee.column2.en', fuzzy: {} } },
+                            { text: { query, path: 'committee.column2.ru', fuzzy: {} } },
+                            { text: { query, path: 'censorship.column1.ro', fuzzy: {} } },
+                            { text: { query, path: 'censorship.column1.en', fuzzy: {} } },
+                            { text: { query, path: 'censorship.column1.ru', fuzzy: {} } },
+                            { text: { query, path: 'censorship.column2.ro', fuzzy: {} } },
+                            { text: { query, path: 'censorship.column2.en', fuzzy: {} } },
+                            { text: { query, path: 'censorship.column2.ru', fuzzy: {} } }
+                        ]
+                    }
+                }
+            },
+            { $limit: limit }
+        ];
+        return this.managementModel.aggregate(pipeline).exec();
+    }
 };
 exports.ManagementService = ManagementService;
 exports.ManagementService = ManagementService = __decorate([

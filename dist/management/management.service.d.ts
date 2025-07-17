@@ -25,4 +25,5 @@ export declare class ManagementService {
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>>;
+    search(query: string, limit?: number): Promise<any[]>;
 }

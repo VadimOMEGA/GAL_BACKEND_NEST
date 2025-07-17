@@ -20,7 +20,8 @@ exports.DocumentsModule = DocumentsModule = __decorate([
     (0, common_1.Module)({
         imports: [aws_module_1.AwsModule, mongoose_1.MongooseModule.forFeature([{ name: documents_schema_1.Documents.name, schema: documents_schema_1.DocumentsSchema }])],
         controllers: [documents_controller_1.DocumentsController],
-        providers: [documents_service_1.DocumentsService]
+        providers: [documents_service_1.DocumentsService],
+        exports: [documents_service_1.DocumentsService]
     })
 ], DocumentsModule);
 //# sourceMappingURL=documents.module.js.map

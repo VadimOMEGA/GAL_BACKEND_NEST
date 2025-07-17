@@ -99,4 +99,5 @@ export declare class BlogsService {
     deleteBlogImages(imageUrls: string[]): Promise<{
         success: boolean;
     }>;
+    search(q: string, limit?: number): Promise<any[]>;
 }

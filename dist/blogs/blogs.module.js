@@ -24,6 +24,7 @@ exports.BlogsModule = BlogsModule = __decorate([
         ],
         controllers: [blogs_controller_1.BlogsController],
         providers: [blogs_service_1.BlogsService],
+        exports: [blogs_service_1.BlogsService],
     })
 ], BlogsModule);
 //# sourceMappingURL=blogs.module.js.map

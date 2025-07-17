@@ -58,6 +58,36 @@ let DocumentsService = class DocumentsService {
     async deleteDocuments(fileUrls) {
         return this.awsService.deleteImages(fileUrls);
     }
+    async search(query, limit = 10) {
+        const pipeline = [
+            {
+                $search: {
+                    index: 'default-documents',
+                    compound: {
+                        should: [
+                            { text: { query, path: 'regulations.text.ro', fuzzy: {} } },
+                            { text: { query, path: 'regulations.text.en', fuzzy: {} } },
+                            { text: { query, path: 'regulations.text.ru', fuzzy: {} } },
+                            { text: { query, path: 'statuses.text.ro', fuzzy: {} } },
+                            { text: { query, path: 'statuses.text.en', fuzzy: {} } },
+                            { text: { query, path: 'statuses.text.ru', fuzzy: {} } },
+                            { text: { query, path: 'strategies.text.ro', fuzzy: {} } },
+                            { text: { query, path: 'strategies.text.en', fuzzy: {} } },
+                            { text: { query, path: 'strategies.text.ru', fuzzy: {} } },
+                            { text: { query, path: 'agreements.text.ro', fuzzy: {} } },
+                            { text: { query, path: 'agreements.text.en', fuzzy: {} } },
+                            { text: { query, path: 'agreements.text.ru', fuzzy: {} } },
+                            { text: { query, path: 'reports.text.ro', fuzzy: {} } },
+                            { text: { query, path: 'reports.text.en', fuzzy: {} } },
+                            { text: { query, path: 'reports.text.ru', fuzzy: {} } }
+                        ]
+                    }
+                }
+            },
+            { $limit: limit }
+        ];
+        return this.documentsModel.aggregate(pipeline).exec();
+    }
 };
 exports.DocumentsService = DocumentsService;
 exports.DocumentsService = DocumentsService = __decorate([
