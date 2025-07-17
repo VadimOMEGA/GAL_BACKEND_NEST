@@ -26,7 +26,6 @@ let SearchService = class SearchService {
         this.managementService = managementService;
     }
     async searchAll(query) {
-        console.log('Search query:', query, typeof query, query.length);
         let management = [];
         let documents = [];
         let blogs = [];
