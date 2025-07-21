@@ -15,7 +15,10 @@ let ContactService = class ContactService {
         auth: {
             user: process.env.SMTP_USERNAME,
             pass: process.env.SMTP_PASSWORD
-        }
+        },
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false
     });
     createHtmlMessage(dto) {
         return `
@@ -49,7 +52,7 @@ let ContactService = class ContactService {
         });
         if (!response)
             throw new common_1.BadRequestException('Failed to send email');
-        return dto;
+        return response;
     }
 };
 exports.ContactService = ContactService;

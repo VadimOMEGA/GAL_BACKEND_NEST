@@ -10,7 +10,10 @@ export class ContactService {
 		auth: {
 			user: process.env.SMTP_USERNAME,
 			pass: process.env.SMTP_PASSWORD
-		}
+		},
+		host: 'smtp.gmail.com',
+		port: 587,
+		secure: false
 	})
 
 	createHtmlMessage(dto: ContactFormDto): string {
@@ -45,8 +48,8 @@ export class ContactService {
 			replyTo: dto.email
 		})
 
-        if(!response) throw new BadRequestException('Failed to send email')
+		if (!response) throw new BadRequestException('Failed to send email')
 
-        return dto
+		return response
 	}
 }
