@@ -1,4 +1,4 @@
-import { IsEmail, IsPhoneNumber, IsString } from "class-validator"
+import { IsEmail, IsString } from "class-validator"
 
 export class ContactFormDto {
     @IsString()
@@ -16,6 +16,6 @@ export class ContactFormDto {
     @IsString()
 	message: string
 
-    @IsPhoneNumber()
+    @IsString()
 	phone: string
 }
