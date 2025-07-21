@@ -48,7 +48,7 @@ let SearchService = class SearchService {
             _id: item._id,
             title: item.title,
             content_type: item.content_type,
-            authentic_local_content_type: item.authentic_local_content_type,
+            authentic_local_category: item.authentic_local_category,
             response_type: response_enum_1.ResponseTypeEnums.BLOG
         }));
         const documentsWithType = documents.map((item) => ({
@@ -59,7 +59,7 @@ let SearchService = class SearchService {
                 en: 'GAL Documents – Official Document Archive'
             },
             content_type: 'DOCUMENTS',
-            authentic_local_content_type: 'DOCUMENTS',
+            authentic_local_category: 'DOCUMENTS',
             response_type: response_enum_1.ResponseTypeEnums.DOCUMENT
         }));
         const managementWithType = management.map((item) => ({
@@ -70,7 +70,7 @@ let SearchService = class SearchService {
                 en: 'GAL Management – Management Team'
             },
             content_type: 'MANAGEMENT',
-            authentic_local_content_type: 'MANAGEMENT',
+            authentic_local_category: 'MANAGEMENT',
             response_type: response_enum_1.ResponseTypeEnums.MANAGEMENT
         }));
         return {

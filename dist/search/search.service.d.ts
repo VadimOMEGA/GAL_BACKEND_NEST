@@ -12,7 +12,7 @@ export declare class SearchService {
             _id: any;
             title: any;
             content_type: any;
-            authentic_local_content_type: any;
+            authentic_local_category: any;
             response_type: ResponseTypeEnums;
         }[];
         stats: {

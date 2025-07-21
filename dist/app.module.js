@@ -18,6 +18,7 @@ const statistics_module_1 = require("./statistics/statistics.module");
 const management_module_1 = require("./management/management.module");
 const documents_module_1 = require("./documents/documents.module");
 const search_module_1 = require("./search/search.module");
+const contact_module_1 = require("./contact/contact.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -36,6 +37,7 @@ exports.AppModule = AppModule = __decorate([
             management_module_1.ManagementModule,
             documents_module_1.DocumentsModule,
             search_module_1.SearchModule,
+            contact_module_1.ContactModule,
         ]
     })
 ], AppModule);

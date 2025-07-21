@@ -7,7 +7,7 @@ export declare class SearchController {
             _id: any;
             title: any;
             content_type: any;
-            authentic_local_content_type: any;
+            authentic_local_category: any;
             response_type: import("../enums/response.enum").ResponseTypeEnums;
         }[];
         stats: {
