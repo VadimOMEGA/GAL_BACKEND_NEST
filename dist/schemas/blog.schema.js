@@ -9,10 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BlogSchema = exports.Blog = exports.Section = exports.SubSection = exports.Summary = void 0;
+exports.BlogSchema = exports.Blog = exports.Section = exports.SubSection = exports.Summary = exports.Image = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const blog_enum_1 = require("../enums/blog.enum");
 const text_schema_1 = require("./shared/text.schema");
+let Image = class Image {
+    url;
+};
+exports.Image = Image;
+__decorate([
+    (0, mongoose_1.Prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], Image.prototype, "url", void 0);
+exports.Image = Image = __decorate([
+    (0, mongoose_1.Schema)({ _id: false })
+], Image);
 let Summary = class Summary {
     column1;
     column2;
@@ -49,7 +60,7 @@ __decorate([
     __metadata("design:type", text_schema_1.MultiLangText)
 ], SubSection.prototype, "column2", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: [String], required: false }),
+    (0, mongoose_1.Prop)({ type: [Image], required: false }),
     __metadata("design:type", Array)
 ], SubSection.prototype, "images", void 0);
 exports.SubSection = SubSection = __decorate([

@@ -13,6 +13,7 @@ exports.SubSectionDto = void 0;
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const multiLangText_dto_1 = require("./multiLangText.dto");
+const image_dto_1 = require("./image.dto");
 class SubSectionDto {
     title;
     column1;
@@ -40,9 +41,10 @@ __decorate([
     __metadata("design:type", multiLangText_dto_1.MultiLangTextDto)
 ], SubSectionDto.prototype, "column2", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsArray)(),
-    (0, class_validator_1.IsString)({ each: true }),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => image_dto_1.ImageDto),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Array)
 ], SubSectionDto.prototype, "images", void 0);
 //# sourceMappingURL=subSection.dto.js.map

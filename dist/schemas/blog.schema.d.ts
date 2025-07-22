@@ -2,6 +2,9 @@ import { HydratedDocument } from 'mongoose';
 import { AuthenticLocalCategoriesEnum, BlogsCategoriesEnum, BlogsContentTypeEnum } from 'src/enums/blog.enum';
 import { MultiLangText } from './shared/text.schema';
 export type BlogDocument = HydratedDocument<Blog>;
+export declare class Image {
+    url: string;
+}
 export declare class Summary {
     column1: MultiLangText;
     column2: MultiLangText;
@@ -10,7 +13,7 @@ export declare class SubSection {
     title: MultiLangText;
     column1: MultiLangText;
     column2: MultiLangText;
-    images: string[];
+    images: Image[];
 }
 export declare class Section {
     title: MultiLangText;

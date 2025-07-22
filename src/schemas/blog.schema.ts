@@ -8,6 +8,12 @@ export type BlogDocument = HydratedDocument<Blog>
 // Helper classes
 
 @Schema({ _id: false })
+export class Image {
+    @Prop({ type: String, required: true })
+    url: string
+}
+
+@Schema({ _id: false })
 export class Summary {
 	@Prop({ type: MultiLangText, required: true })
 	column1: MultiLangText
@@ -27,8 +33,8 @@ export class SubSection {
 	@Prop({ type: MultiLangText, required: false })
 	column2: MultiLangText
 
-	@Prop({ type: [String], required: false })
-	images: string[]
+	@Prop({ type: [Image], required: false })
+	images: Image[]
 }
 
 @Schema({ _id: false })
