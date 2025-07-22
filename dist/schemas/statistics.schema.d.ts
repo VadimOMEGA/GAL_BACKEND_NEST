@@ -4,14 +4,14 @@ export type StatisticsDocument = HydratedDocument<Statistics>;
 export declare class Statistics {
     title: MultiLangText;
     image: string;
-    projects_number: string;
-    activity_years: string;
-    population: string;
-    total_members: string;
-    total_added_members: string;
-    business_members: string;
-    public_members: string;
-    civic_members: string;
+    projects_number: number;
+    activity_years: number;
+    population: number;
+    total_members: number;
+    total_added_members: number;
+    business_members: number;
+    public_members: number;
+    civic_members: number;
 }
 export declare const StatisticsSchema: import("mongoose").Schema<Statistics, import("mongoose").Model<Statistics, any, any, any, import("mongoose").Document<unknown, any, Statistics, any> & Statistics & {
     _id: import("mongoose").Types.ObjectId;

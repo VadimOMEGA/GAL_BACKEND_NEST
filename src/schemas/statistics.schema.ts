@@ -12,29 +12,29 @@ export class Statistics {
     @Prop({ type: String, required: true })
     image: string
 
-    @Prop({ type: String, required: true })
-    projects_number: string
+    @Prop({ type: Number, required: true })
+    projects_number: number
 
-    @Prop({ type: String, required: true })
-    activity_years: string
+    @Prop({ type: Number, required: true })
+    activity_years: number
 
-    @Prop({ type: String, required: true })
-    population: string
+    @Prop({ type: Number, required: true })
+    population: number
 
-    @Prop({ type: String, required: true })
-    total_members: string
+    @Prop({ type: Number, required: true })
+    total_members: number
 
-    @Prop({ type: String, required: true })
-    total_added_members: string
+    @Prop({ type: Number, required: true })
+    total_added_members: number
 
-    @Prop({ type: String, required: true })
-    business_members: string
+    @Prop({ type: Number, required: true })
+    business_members: number
 
-    @Prop({ type: String, required: true })
-    public_members: string
+    @Prop({ type: Number, required: true })
+    public_members: number
 
-    @Prop({ type: String, required: true })
-    civic_members: string
+    @Prop({ type: Number, required: true })
+    civic_members: number
 }
 
 export const StatisticsSchema = SchemaFactory.createForClass(Statistics)

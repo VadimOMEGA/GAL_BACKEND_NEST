@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsObject, IsString, MinLength, ValidateNested } from "class-validator";
+import { IsNumber, IsObject, IsString, MinLength, ValidateNested } from "class-validator";
 import { MultiLangTextDto } from "src/blogs/dto/multiLangText.dto";
 
 export class StatisticsDto {
@@ -12,35 +12,27 @@ export class StatisticsDto {
   @MinLength(1)
   image: string;
 
-  @IsString()
-  @MinLength(1)
-  projects_number: string;
+  @IsNumber()
+  projects_number: number;
 
-  @IsString()
-  @MinLength(1)
-  activity_years: string;
+  @IsNumber()
+  activity_years: number;
 
-  @IsString()
-  @MinLength(1)
-  population: string;
+  @IsNumber()
+  population: number;
 
-  @IsString()
-  @MinLength(1)
-  total_members: string;
+  @IsNumber()
+  total_members: number;
 
-  @IsString()
-  @MinLength(1)
-  total_added_members: string;
+  @IsNumber()
+  total_added_members: number;
 
-  @IsString()
-  @MinLength(1)
-  business_members: string;
+  @IsNumber()
+  business_members: number;
 
-  @IsString()
-  @MinLength(1)
-  public_members: string;
+  @IsNumber()
+  public_members: number;
 
-  @IsString()
-  @MinLength(1)
-  civic_members: string;
+  @IsNumber()
+  civic_members: number;
 }

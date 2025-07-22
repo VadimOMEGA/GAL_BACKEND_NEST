@@ -34,36 +34,36 @@ __decorate([
     __metadata("design:type", String)
 ], Statistics.prototype, "image", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "projects_number", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "activity_years", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "population", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "total_members", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "total_added_members", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "business_members", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "public_members", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, required: true }),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ type: Number, required: true }),
+    __metadata("design:type", Number)
 ], Statistics.prototype, "civic_members", void 0);
 exports.Statistics = Statistics = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true, collection: 'statistics' })

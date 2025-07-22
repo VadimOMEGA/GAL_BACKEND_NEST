@@ -38,43 +38,35 @@ __decorate([
     __metadata("design:type", String)
 ], StatisticsDto.prototype, "image", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "projects_number", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "activity_years", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "population", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "total_members", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "total_added_members", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "business_members", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "public_members", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(1),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsNumber)(),
+    __metadata("design:type", Number)
 ], StatisticsDto.prototype, "civic_members", void 0);
 //# sourceMappingURL=statistics.dto.js.map

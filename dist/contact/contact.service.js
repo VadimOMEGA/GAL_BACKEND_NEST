@@ -42,7 +42,7 @@ let ContactService = class ContactService {
         `;
     }
     async sendToGal(dto) {
-        const response = this.transporter.sendMail({
+        const response = await this.transporter.sendMail({
             from: `"GAL Contact Form" <${dto.email}>`,
             to: process.env.SMTP_USERNAME,
             subject: dto.subject,
