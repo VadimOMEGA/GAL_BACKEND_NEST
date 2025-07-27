@@ -188,7 +188,7 @@ let BlogsService = class BlogsService {
                             { autocomplete: { query: q, path: 'sections.subsections.title.en', fuzzy: {} } },
                             { autocomplete: { query: q, path: 'sections.subsections.title.ru', fuzzy: {} } },
                             { autocomplete: { query: q, path: 'content_type', fuzzy: {} } },
-                            { autocomplete: { query: q, path: 'categories', fuzzy: {} } },
+                            { text: { query: q, path: 'categories', synonyms: "categorySynonyms" } },
                             { autocomplete: { query: q, path: 'authentic_local_category', fuzzy: {} } }
                         ]
                     }
@@ -196,7 +196,7 @@ let BlogsService = class BlogsService {
             },
             { $limit: limit }
         ];
-        return this.blogModel.aggregate(aggregatePipeline).exec();
+        return this.blogModel.aggregate(aggregatePipeline).sort({ createdAt: -1 }).exec();
     }
 };
 exports.BlogsService = BlogsService;
