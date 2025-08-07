@@ -3,7 +3,8 @@ import { AuthenticLocalCategoriesEnum, BlogsCategoriesEnum, BlogsContentTypeEnum
 import { MultiLangText } from './shared/text.schema';
 export type BlogDocument = HydratedDocument<Blog>;
 export declare class Image {
-    url: string;
+    url_1: string;
+    url_2?: string;
 }
 export declare class Summary {
     column1: MultiLangText;

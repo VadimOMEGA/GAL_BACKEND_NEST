@@ -12,11 +12,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImageDto = void 0;
 const class_validator_1 = require("class-validator");
 class ImageDto {
-    url;
+    url_1;
+    url_2;
 }
 exports.ImageDto = ImageDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], ImageDto.prototype, "url", void 0);
+], ImageDto.prototype, "url_1", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], ImageDto.prototype, "url_2", void 0);
 //# sourceMappingURL=image.dto.js.map

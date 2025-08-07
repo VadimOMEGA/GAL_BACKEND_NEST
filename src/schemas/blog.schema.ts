@@ -10,7 +10,10 @@ export type BlogDocument = HydratedDocument<Blog>
 @Schema({ _id: false })
 export class Image {
     @Prop({ type: String, required: true })
-    url: string
+    url_1: string
+
+	@Prop({ type: String, required: false })
+    url_2?: string
 }
 
 @Schema({ _id: false })

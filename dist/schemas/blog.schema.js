@@ -14,13 +14,18 @@ const mongoose_1 = require("@nestjs/mongoose");
 const blog_enum_1 = require("../enums/blog.enum");
 const text_schema_1 = require("./shared/text.schema");
 let Image = class Image {
-    url;
+    url_1;
+    url_2;
 };
 exports.Image = Image;
 __decorate([
     (0, mongoose_1.Prop)({ type: String, required: true }),
     __metadata("design:type", String)
-], Image.prototype, "url", void 0);
+], Image.prototype, "url_1", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: String, required: false }),
+    __metadata("design:type", String)
+], Image.prototype, "url_2", void 0);
 exports.Image = Image = __decorate([
     (0, mongoose_1.Schema)({ _id: false })
 ], Image);

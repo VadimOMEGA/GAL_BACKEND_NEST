@@ -1,3 +1,4 @@
 export declare class ImageDto {
-    url: string;
+    url_1: string;
+    url_2?: string;
 }
