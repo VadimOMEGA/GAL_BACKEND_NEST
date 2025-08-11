@@ -13,6 +13,7 @@ exports.StatisticsDto = void 0;
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const multiLangText_dto_1 = require("../../blogs/dto/multiLangText.dto");
+const executive_member_dto_1 = require("./executive-member.dto");
 class StatisticsDto {
     title;
     image;
@@ -24,6 +25,7 @@ class StatisticsDto {
     business_members;
     public_members;
     civic_members;
+    executive_members;
 }
 exports.StatisticsDto = StatisticsDto;
 __decorate([
@@ -69,4 +71,10 @@ __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], StatisticsDto.prototype, "civic_members", void 0);
+__decorate([
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ValidateNested)({ each: true }),
+    (0, class_transformer_1.Type)(() => executive_member_dto_1.ExecutiveMemberDto),
+    __metadata("design:type", Array)
+], StatisticsDto.prototype, "executive_members", void 0);
 //# sourceMappingURL=statistics.dto.js.map

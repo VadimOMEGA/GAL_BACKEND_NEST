@@ -1,4 +1,5 @@
-import { MultiLangTextDto } from "src/blogs/dto/multiLangText.dto";
+import { MultiLangTextDto } from 'src/blogs/dto/multiLangText.dto';
+import { ExecutiveMemberDto } from './executive-member.dto';
 export declare class StatisticsDto {
     title: MultiLangTextDto;
     image: string;
@@ -10,4 +11,5 @@ export declare class StatisticsDto {
     business_members: number;
     public_members: number;
     civic_members: number;
+    executive_members: ExecutiveMemberDto[];
 }

@@ -9,9 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatisticsSchema = exports.Statistics = void 0;
+exports.StatisticsSchema = exports.Statistics = exports.ExecutiveMember = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const text_schema_1 = require("./shared/text.schema");
+let ExecutiveMember = class ExecutiveMember {
+    image;
+    name;
+    position;
+};
+exports.ExecutiveMember = ExecutiveMember;
+__decorate([
+    (0, mongoose_1.Prop)({ type: String, required: true }),
+    __metadata("design:type", String)
+], ExecutiveMember.prototype, "image", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: text_schema_1.MultiLangText, required: true }),
+    __metadata("design:type", text_schema_1.MultiLangText)
+], ExecutiveMember.prototype, "name", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: text_schema_1.MultiLangText, required: true }),
+    __metadata("design:type", text_schema_1.MultiLangText)
+], ExecutiveMember.prototype, "position", void 0);
+exports.ExecutiveMember = ExecutiveMember = __decorate([
+    (0, mongoose_1.Schema)({ _id: false })
+], ExecutiveMember);
 let Statistics = class Statistics {
     title;
     image;
@@ -23,6 +44,7 @@ let Statistics = class Statistics {
     business_members;
     public_members;
     civic_members;
+    executive_members;
 };
 exports.Statistics = Statistics;
 __decorate([
@@ -65,6 +87,10 @@ __decorate([
     (0, mongoose_1.Prop)({ type: Number, required: true }),
     __metadata("design:type", Number)
 ], Statistics.prototype, "civic_members", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: [ExecutiveMember], required: true }),
+    __metadata("design:type", Array)
+], Statistics.prototype, "executive_members", void 0);
 exports.Statistics = Statistics = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true, collection: 'statistics' })
 ], Statistics);

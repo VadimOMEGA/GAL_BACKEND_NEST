@@ -1,6 +1,11 @@
 import { HydratedDocument } from 'mongoose';
 import { MultiLangText } from './shared/text.schema';
 export type StatisticsDocument = HydratedDocument<Statistics>;
+export declare class ExecutiveMember {
+    image: string;
+    name: MultiLangText;
+    position: MultiLangText;
+}
 export declare class Statistics {
     title: MultiLangText;
     image: string;
@@ -12,6 +17,7 @@ export declare class Statistics {
     business_members: number;
     public_members: number;
     civic_members: number;
+    executive_members: ExecutiveMember[];
 }
 export declare const StatisticsSchema: import("mongoose").Schema<Statistics, import("mongoose").Model<Statistics, any, any, any, import("mongoose").Document<unknown, any, Statistics, any> & Statistics & {
     _id: import("mongoose").Types.ObjectId;

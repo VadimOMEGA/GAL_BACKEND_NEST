@@ -4,6 +4,19 @@ import { MultiLangText } from './shared/text.schema'
 
 export type StatisticsDocument = HydratedDocument<Statistics>
 
+@Schema({ _id: false })
+export class ExecutiveMember {
+    @Prop({ type: String, required: true })
+    image: string
+
+    @Prop({ type: MultiLangText, required: true })
+    name: MultiLangText
+
+    @Prop({ type: MultiLangText, required: true })
+    position: MultiLangText
+
+}
+
 @Schema({ timestamps: true, collection: 'statistics' })
 export class Statistics {
 	@Prop({ type: MultiLangText, required: true })
@@ -35,6 +48,9 @@ export class Statistics {
 
     @Prop({ type: Number, required: true })
     civic_members: number
+
+    @Prop({ type: [ExecutiveMember], required: true })
+    executive_members: ExecutiveMember[]
 }
 
 export const StatisticsSchema = SchemaFactory.createForClass(Statistics)
