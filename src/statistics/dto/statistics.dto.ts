@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer'
-import { IsArray, IsNumber, IsObject, IsString, MinLength, ValidateNested } from 'class-validator'
+import { ArrayMaxSize, ArrayMinSize, IsArray, IsNumber, IsObject, IsString, MinLength, ValidateNested } from 'class-validator'
 import { MultiLangTextDto } from 'src/blogs/dto/multiLangText.dto'
 import { ExecutiveMemberDto } from './executive-member.dto'
 
@@ -38,6 +38,8 @@ export class StatisticsDto {
 	civic_members: number
 
 	@IsArray()
+	@ArrayMinSize(4)
+	@ArrayMaxSize(4)
 	@ValidateNested({ each: true })
 	@Type(() => ExecutiveMemberDto)
 	executive_members: ExecutiveMemberDto[]

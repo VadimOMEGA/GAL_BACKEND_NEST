@@ -73,6 +73,8 @@ __decorate([
 ], StatisticsDto.prototype, "civic_members", void 0);
 __decorate([
     (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.ArrayMinSize)(4),
+    (0, class_validator_1.ArrayMaxSize)(4),
     (0, class_validator_1.ValidateNested)({ each: true }),
     (0, class_transformer_1.Type)(() => executive_member_dto_1.ExecutiveMemberDto),
     __metadata("design:type", Array)
